@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:football_news/screens/menu.dart';
-import 'package:football_news/screens/newslist_form.dart';
+import 'package:football_news/screens/newslist_form.dart'; // Add this import at the top
+import 'package:football_news/screens/news_entry_list.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -11,62 +12,73 @@ class LeftDrawer extends StatelessWidget {
       child: ListView(
         children: [
           const DrawerHeader(
-  decoration: BoxDecoration(
-    color: Colors.blue,
-  ),
-  child: Column(
-    children: [
-      Text(
-        'Football News',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-      ),
-      Padding(padding: EdgeInsets.all(10)),
-      Text("Seluruh berita sepak bola terkini di sini!",
-      // Tambahkan gaya teks dengan center alignment, font ukuran 15, warna putih, dan weight biasa
-          textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
-          color: Colors.white),
-          
+            decoration: BoxDecoration(color: Colors.blue),
+            child: Column(
+              children: [
+                Text(
+                  'Football News',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                Text(
+                  "Seluruh berita sepak bola terkini di sini!",
+                  // Tambahkan gaya teks dengan center alignment, font ukuran 15, warna putih, dan weight biasa
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
           ),
-    ],
-  ),
-),
           ListTile(
-  leading: const Icon(Icons.home_outlined),
-  title: const Text('Home'),
-  // Bagian redirection ke MyHomePage
-  onTap: () {
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => MyHomePage(),
-        ));
-  },
-),
-ListTile(
-  leading: const Icon(Icons.post_add),
-  title: const Text('Add News'),
-  // Bagian redirection ke NewsFormPage
-  onTap: () {
-    /*
+            leading: const Icon(Icons.home_outlined),
+            title: const Text('Home'),
+            // Bagian redirection ke MyHomePage
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => MyHomePage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.post_add),
+            title: const Text('Add News'),
+            // Bagian redirection ke NewsFormPage
+            onTap: () {
+              /*
     Buatlah routing ke NewsFormPage di sini,
     setelah halaman NewsFormPage sudah dibuat.
     */
-    Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (context) => NewsFormPage(), // Pass data
-  ),
-);
-  },
-),
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NewsFormPage(), // Pass data
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add_reaction_rounded),
+            title: const Text('News List'),
+            onTap: () {
+              // Route to news list page
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NewsEntryListPage(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
